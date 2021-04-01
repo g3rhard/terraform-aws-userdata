@@ -18,4 +18,5 @@ ansible-galaxy install -r ansible-minikube-test/requirements.yml
 ansible-playbook ansible-minikube-test/provision.yaml
 # Add user ubntu to group docker
 usermod -aG docker ubuntu
+minikube start
 echo > /tmp/provision.finished
