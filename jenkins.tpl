@@ -1,10 +1,22 @@
 #!/bin/bash
 
-sudo apt update -qq
-apt-get -qq install software-properties-common -y
-wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
-sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
-apt update -qq
-apt install -y default-jre
-apt install -y jenkins
-systemctl start jenkins
+SERVER="jenkins"
+
+# Shared Part
+apt-get update
+apt-get -qq install git-core software-properties-common python python-setuptools -y
+apt-add-repository -y ppa:ansible/ansible
+apt-get update
+apt-get -qq install -y ansible
+
+# Clone repo with playbooks
+git clone --depth 1 https://github.com/g3rhard/terraform-ansible-provision.git
+# Define Host
+echo "[$SERVER]" | tee -a /etc/ansible/hosts
+echo "localhost ansible_connection=local" | tee -a /etc/ansible/hosts
+
+# Ansible-galaxy
+ansible-galaxy install -r "terraform-ansible-provision/$SERVER/requirements.yml"
+ansible-playbook "terraform-ansible-provision/$SERVER/provision.yaml"
+
+echo > /tmp/provision.finished
