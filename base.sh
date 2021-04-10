@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Shared Part
+# Base
 sudo apt-get update
 sudo apt-get -qq install git-core software-properties-common python python-setuptools -y
 sudo apt-add-repository -y ppa:ansible/ansible
