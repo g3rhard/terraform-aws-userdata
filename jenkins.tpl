@@ -2,13 +2,6 @@
 
 SERVER="jenkins"
 
-# Shared Part
-apt-get update
-apt-get -qq install git-core software-properties-common python python-setuptools -y
-apt-add-repository -y ppa:ansible/ansible
-apt-get update
-apt-get -qq install -y ansible
-
 # Clone repo with playbooks
 git clone --depth 1 https://github.com/g3rhard/terraform-ansible-provision.git
 # Define Host
