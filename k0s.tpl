@@ -19,4 +19,6 @@ k0s install controller --single >> /tmp/provision.log 2>&1
 systemctl start k0scontroller >> /tmp/provision.log 2>&1
 systemctl enable k0scontroller >> /tmp/provision.log 2>&1
 
+curl -sS https://webinstall.dev/k9s | bash >> /tmp/provision.log 2>&1
+
 echo > /tmp/provision.finished

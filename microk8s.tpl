@@ -19,4 +19,6 @@ usermod -a -G microk8s ubuntu
 mkdir /home/ubuntu/.kube
 chown -f -R ubuntu /home/ubuntu/.kube
 
+curl -sS https://webinstall.dev/k9s | bash >> /tmp/provision.log 2>&1
+
 echo > /tmp/provision.finished

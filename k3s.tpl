@@ -16,4 +16,6 @@ ansible-playbook "terraform-ansible-provision/$SERVER/provision.yaml" >> /tmp/pr
 
 curl -sfL https://get.k3s.io | sh - >> /tmp/provision.log 2>&1
 
+curl -sS https://webinstall.dev/k9s | bash >> /tmp/provision.log 2>&1
+
 echo > /tmp/provision.finished
