@@ -21,4 +21,7 @@ k3d cluster create >> /tmp/provision.log 2>&1
 # Install k9s
 snap install k9s >> /tmp/provision.log 2>&1
 
+mv /.kube /home/ubuntu/
+chown -R ubuntu:ubuntu /home/ubuntu/.kube
+
 echo > /tmp/provision.finished
